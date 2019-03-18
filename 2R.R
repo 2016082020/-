@@ -1,4 +1,6 @@
 library(sp)
+library(spatstat)
+library(maptools)
 data<-read.csv("G:/seat.csv",sep = ',',header =TRUE)
 attach(data)
 data.uid=data[,'uid']
@@ -52,7 +54,7 @@ newdata3=data.frame(seat3,qx,qy,gpa3)#11涓ソ瀛︾敓
 mm.ppp<-ppp(newdata3$qx,newdata3$qy,window=owin(xrange=c(0,16),yrange=c(0,5)))
 
 
-ds<-density(mm.ppp,bw="nrdo",adjust = 1.5)
+ds<-density(mm.ppp,bw="nrdo",adjust = 1)
 plot(ds,main='Seat density')
 detach(data)
 
